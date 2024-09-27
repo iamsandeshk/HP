@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>H+ Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="i.css" />
+  </head>
+  <body>
+    <!--
+    <svg class="pl" width="240" height="240" viewBox="0 0 240 240">
+	<circle class="pl__ring pl__ring--a" cx="120" cy="120" r="105" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 660" stroke-dashoffset="-330" stroke-linecap="round"></circle>
+	<circle class="pl__ring pl__ring--b" cx="120" cy="120" r="35" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 220" stroke-dashoffset="-110" stroke-linecap="round"></circle>
+	<circle class="pl__ring pl__ring--c" cx="85" cy="120" r="70" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 440" stroke-linecap="round"></circle>
+	<circle class="pl__ring pl__ring--d" cx="155" cy="120" r="70" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 440" stroke-linecap="round"></circle>
+</svg>
+-->
+    <div class="sidebar">
+      <div class="sidebar-top">
+        <div class="logo">H+</div>
+        <div class="menu">
+          <a href="#" class="menu-item"
+            ><span class="icon">📊</span> Patients Analytics</a
+          >
+          <a href="#" class="menu-item"
+            ><span class="icon">🗃️</span> Manage Data</a
+          >
+          <a href="#" class="menu-item"
+            ><span class="icon">🏥</span> Hospital Data</a
+          >
+          <a href="#" class="menu-item"><span class="icon">👨‍⚕️</span> Doctors</a>
+
+          <a href="#" class="menu-item"
+            ><span class="icon">📈</span> Statistics</a
+          >
+          <a href="#" class="menu-item"
+            ><span class="icon">🔬</span> Research</a
+          >
+        </div>
+      </div>
+      <div class="sidebar-bottom">
+        <a href="#" class="log-out"
+          ><i class="fa-solid fa-right-from-bracket"></i
+          ><span class="icon"></span>Logout</a
+        >
+      </div>
+    </div>
+    <div class="main-content">
+      <div class="header">
+        <div class="nav-bar">
+          <div class="search-container">
+            <input type="text" placeholder="Search..." class="search-input" />
+            <button class="search-button">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div> <div class="welcome">
+            <h1 style="font-family:Source Code Pro;font-weight: bolder;font-size: 40px;">Your Health, Your Choice</h1>
+          </div>
+
+          <div class="nav-right">
+            <a href="#" class="nav-icon" title="Help"
+              ><span class="nicon"><i class="fa-solid fa-question"></i></span
+            ></a>
+            <a href="#" class="nav-icon" title="Notifications"
+              ><span class="nicon"><i class="fa-solid fa-bell"></i></span
+            ></a>
+            <a href="#" class="nav-icon" title="Settings"
+              ><span class="nicon"><i class="fa-solid fa-gear"></i></span
+            ></a>
+            <a href="#" class="user-profile">
+              <img
+                src="PIc/user-avatar.jpg"
+                alt="User Avatar"
+                class="user-avatar"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <div>
+          <h2 style="color: rgb(43, 43, 53)">Dashboard :</h2>
+        </div>
+        <div class="folders">
+          <!-- Placeholder for dashboard folders or components -->
+          <div class="folder">
+            <span class="folder-icon">💉</span>
+            <span class="folder-name">Lab Results</span>
+          </div>
+          <div class="folder">
+            <span class="folder-icon">💉</span>
+            <span class="folder-name">Lab Results</span>
+          </div>
+          <div class="folder">
+            <span class="folder-icon">🧾</span>
+            <span class="folder-name">Recent Records</span>
+          </div>
+          <div class="folder">
+            <span class="folder-icon">💉</span>
+            <span class="folder-name">Lab Results</span>
+          </div>
+          <div class="folder">
+            <span class="folder-icon">📁</span>
+            <span class="folder-name">New Patients</span>
+          </div>
+        </div>
+        <h2>Records :</h2>
+        <div class="HLine">
+          <div class="Hfolder">
+            <span class="folder-icon">💉</span>
+            <span class="folder-name">Lab Results</span>
+          </div>
+          <div class="Hfolder">
+            <span class="folder-icon">💉</span>
+            <span class="folder-name">Lab Results</span>
+          </div>
+          <div class="Hfolder">
+            <span class="folder-icon">💉</span>
+            <span class="folder-name">Lab Results</span>
+          </div>
+        </div>
+      </div>
+      <button class="plus-button">+</button>
+    </div>
+  </body>
+</html>
