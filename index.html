@@ -12,34 +12,23 @@
     <link rel="stylesheet" href="i.css" />
   </head>
   <body>
-    <!--
-    <svg class="pl" width="240" height="240" viewBox="0 0 240 240">
-	<circle class="pl__ring pl__ring--a" cx="120" cy="120" r="105" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 660" stroke-dashoffset="-330" stroke-linecap="round"></circle>
-	<circle class="pl__ring pl__ring--b" cx="120" cy="120" r="35" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 220" stroke-dashoffset="-110" stroke-linecap="round"></circle>
-	<circle class="pl__ring pl__ring--c" cx="85" cy="120" r="70" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 440" stroke-linecap="round"></circle>
-	<circle class="pl__ring pl__ring--d" cx="155" cy="120" r="70" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 440" stroke-linecap="round"></circle>
-</svg>
--->
+    <div class="container">
     <div class="sidebar">
       <div class="sidebar-top">
         <div class="logo">H+</div>
         <div class="menu">
+          <li class="menu-item" onclick="showSection('dashboard')"><span class="icon">📊</span>Dashboard</li>
+          <li class="menu-item" onclick="showSection('patient-analytics')"><span class="icon">🗃️</span>Patient Analytics</li>
+    
           <a href="#" class="menu-item"
-            ><span class="icon">📊</span> Patients Analytics</a
-          >
-          <a href="#" class="menu-item"
-            ><span class="icon">🗃️</span> Manage Data</a
-          >
-          <a href="#" class="menu-item"
-            ><span class="icon">🏥</span> Hospital Data</a
-          >
-          <a href="#" class="menu-item"><span class="icon">👨‍⚕️</span> Doctors</a>
+            ><span class="icon">🏥</span> Hospital Data</a>
+          <li class="menu-item" onclick="showSection('doctor-connect')"><span class="icon">👨‍⚕️</span>Doctors</li>
 
           <a href="#" class="menu-item"
             ><span class="icon">📈</span> Statistics</a
           >
           <a href="#" class="menu-item"
-            ><span class="icon">🔬</span> Research</a
+            ><span class="icon">🔬</span> Review</a
           >
         </div>
       </div>
@@ -82,50 +71,234 @@
           </div>
         </div>
       </div>
-      <div class="content">
-        <div>
-          <h2 style="color: rgb(43, 43, 53)">Dashboard :</h2>
+      
+  
+
+<!-- Content Sections -->
+<div class="content">
+  <!-- Dashboard Section -->
+  <section id="dashboard">
+      <div>
+        <h2 style="color: rgb(43, 43, 53)">Dashboard :</h2>
+      </div>
+      <div class="folders">
+        <!-- Placeholder for dashboard folders or components -->
+        <div class="folder">
+          <span class="folder-icon">💉</span>
+          <span class="folder-name">Lab Results</span>
         </div>
-        <div class="folders">
-          <!-- Placeholder for dashboard folders or components -->
-          <div class="folder">
-            <span class="folder-icon">💉</span>
-            <span class="folder-name">Lab Results</span>
-          </div>
-          <div class="folder">
-            <span class="folder-icon">💉</span>
-            <span class="folder-name">Lab Results</span>
-          </div>
-          <div class="folder">
-            <span class="folder-icon">🧾</span>
-            <span class="folder-name">Recent Records</span>
-          </div>
-          <div class="folder">
-            <span class="folder-icon">💉</span>
-            <span class="folder-name">Lab Results</span>
-          </div>
-          <div class="folder">
-            <span class="folder-icon">📁</span>
-            <span class="folder-name">New Patients</span>
-          </div>
+        <div class="folder">
+          <span class="folder-icon">💉</span>
+          <span class="folder-name">Lab Results</span>
         </div>
-        <h2>Records :</h2>
-        <div class="HLine">
-          <div class="Hfolder">
-            <span class="folder-icon">💉</span>
-            <span class="folder-name">Lab Results</span>
-          </div>
-          <div class="Hfolder">
-            <span class="folder-icon">💉</span>
-            <span class="folder-name">Lab Results</span>
-          </div>
-          <div class="Hfolder">
-            <span class="folder-icon">💉</span>
-            <span class="folder-name">Lab Results</span>
-          </div>
+        <div class="folder">
+          <span class="folder-icon">🧾</span>
+          <span class="folder-name">Recent Records</span>
+        </div>
+        <div class="folder">
+          <span class="folder-icon">💉</span>
+          <span class="folder-name">Lab Results</span>
+        </div>
+        <div class="folder">
+          <span class="folder-icon">📁</span>
+          <span class="folder-name">New Patients</span>
         </div>
       </div>
-      <button class="plus-button">+</button>
+      <h2>Recent Records :</h2>
+      <div class="HLine">
+        <div class="Hfolder">
+          <span class="folder-icon">💉</span>
+          <span class="folder-name">Lab Results</span>
+        </div>
+        <div class="Hfolder">
+          <span class="folder-icon">💉</span>
+          <span class="folder-name">Lab Results</span>
+        </div>
+        <div class="Hfolder">
+          <span class="folder-icon">💉</span>
+          <span class="folder-name">Lab Results</span>
+        </div>
+      </div>
+  <button class="plus-button" onclick="openPage()">+</button>
+    <!-- Your dashboard content here -->
+  </section>
+
+  <!-- Patient Analytics Section -->
+  <section id="patient-analytics" style="display:none;">
+    <h1>Patient Analytics</h1>
+    <!-- Your patient analytics content here -->
+      <div class="profile-panel">
+        <div class="profile-card">
+            <div class="photo-circle">+<span class="add-records">ADD Record</span></div>
+            <p class="name">Patient_Name</p> <!-- Replace with dynamic patient name if needed -->
+            <p class="pin">PID : 9Q9WTR26TS</p>
+          
+            <div class="shared-profiles">
+                <p>Shared profile</p>
+            </div>
+        </div>
+    
+        <div class="medical-details">
+            <div class="details-row">
+                <div class="detail-item">
+                    <label>Blood type</label>
+                    <select>
+                        <option>There isn't</option>
+                    </select>
+                </div>
+                <div class="detail-item">
+                    <label>Height (cm)</label>
+                    <input type="number" value="0" />
+                </div>
+                <div class="detail-item">
+                    <label>Weight (kg)</label>
+                    <input type="number" value="0" />
+                </div>
+            </div>
+    
+            <div class="additional-info">
+                <p>Additional information</p>
+                <div class="chronic-diseases">
+                    <label>Chronic diseases</label>
+                    <div class="disease-box">
+                        <p>No chronic diseases</p>
+                    </div>
+                </div>
+                <div class="chronic-diseases">
+                  <label>Other diseases</label>
+                  <div class="disease-box">
+                      <p>No Other diseases</p>
+                  </div>
+              </div>
+                <div class="allergies">
+                    <label>Allergies</label>
+                    <button>Add a record</button>
+                </div>
+            </div>
+        </div>
+    </div>    
+  </section>
+
+  <!-- Doctors Section -->
+  <section id="doctor-connect" style="display:none;">
+    <h1>Doctors Content</h1>
+    <!-- Your doctor search content here -->
+
+      <div class="doctor-search-container">
+        <div class="doctor-search-header">
+            <h2>Look for doctors</h2>
+            <div class="doctor-search-options">
+                <button class="doctor-search-option active">Doctors</button>
+                <button class="doctor-search-option">Health facility</button>
+            </div>
+        </div>
+    
+        <div class="doctor-search-filter">
+            <select class="doctor-search-select">
+                <option value="all">All doctors</option>
+            </select>
+            <input type="text" placeholder="Look for doctors by name" class="doctor-search-input" />
+            <button class="doctor-search-btn">🔍</button>
+        </div>
+    
+        <div class="doctor-list">
+            <!-- Doctor 1 -->
+            <div class="doctor-card">
+                <img src="doctor1.jpg" alt="Dr. Veselin Ivanova" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Dr. Veselin Ivanova</h3>
+                    <p class="doctor-specialty">Hematology</p>
+                    <p class="doctor-facility">MC "Dr. Kalchev"</p>
+                </div>
+            </div>
+    
+            <!-- Doctor 2 -->
+            <div class="doctor-card">
+                <img src="doctor2.jpg" alt="Dr. Georgi Tonchev" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Dr. Georgi Tonchev</h3>
+                    <p class="doctor-specialty">Hematology</p>
+                    <p class="doctor-facility">MC "Dr. Kalchev"</p>
+                </div>
+            </div>
+    
+            <!-- Doctor 3 -->
+            <div class="doctor-card">
+                <img src="doctor3.jpg" alt="Dr. Ivan-Asen Shishmanov" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Dr. Ivan-Asen Shishmanov</h3>
+                    <p class="doctor-specialty">Cardiology</p>
+                    <p class="doctor-facility">DCC Saint Sofia</p>
+                </div>
+            </div>
+    
+            <!-- Doctor 4 -->
+            <div class="doctor-card">
+                <img src="doctor4.jpg" alt="Dr. Daniela Krasimirova" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Dr. Daniela Krasimirova</h3>
+                    <p class="doctor-specialty">Endocrinology</p>
+                    <p class="doctor-facility">MC "Dr. Kalchev"</p>
+                </div>
+            </div>
+    
+        
+        </div>
     </div>
+
+  </section>
+</div>
+
+
+
+    </div>
+    </div>
+    <script>
+      function openPage() {
+          window.open('NewP.html'); // Opens in a new tab
+      }
+      function showSection(sectionId) {
+        // Hide all sections
+  const sections = document.querySelectorAll('section');
+  sections.forEach(section => {
+    section.style.display = 'none';
+  });
+
+  // Show the selected section
+  const selectedSection = document.getElementById(sectionId);
+  if (selectedSection) {
+    selectedSection.style.display = 'block';
+  }
+}
+
+function showSection(sectionId) {
+  // Hide all sections
+  const sections = document.querySelectorAll('section');
+  sections.forEach(section => {
+    section.style.display = 'none';
+  });
+
+  // Remove active class from all menu items
+  const menuItems = document.querySelectorAll('.menu-item');
+  menuItems.forEach(item => {
+    item.classList.remove('active');
+  });
+
+  // Show the selected section
+  const selectedSection = document.getElementById(sectionId);
+  if (selectedSection) {
+    selectedSection.style.display = 'block';
+  }
+
+  // Highlight the active menu item
+  const activeMenuItem = document.querySelector(`.menu-item[onclick="showSection('${sectionId}')"]`);
+  if (activeMenuItem) {
+    activeMenuItem.classList.add('active');
+  }
+}
+
+
+</script>
+  
   </body>
 </html>
