@@ -284,6 +284,10 @@ html {
   padding: 7px;
 }
 
+a {
+text-decoration: none;
+}
+
 .name {
   font-size: 1.2rem;
   font-weight: bold;
@@ -375,7 +379,7 @@ html {
 }
 
 .allergies button {
-  background-color: #00695c;
+  background-color: #464646;
   color: white;
   border: none;
   padding: 10px 15px;
@@ -384,7 +388,7 @@ html {
 }
 
 .allergies button:hover {
-  background-color: #004d40;
+  background-color: #2e2e2e;
 }
 
 
