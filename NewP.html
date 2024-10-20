@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 columns */
+            gap: 10px;
+        }
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+        }
+        .checkbox-group input {
+            margin-right: 10px;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+        select, input[name="allergies"],input[name="medicines"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Add New Record</h1>
+    <form action="#" method="post">
+        <!-- Basic Details -->
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="patient-name">Patient Id</label>
+                <input type="text" id="patient-name" placeholder="Ex: PAH12345" name="patient-name">
+            </div>
+            <div class="form-group">
+                <label for="phone-number">Patient Name</label>
+                <input type="text" id="phone-number" name="phone-number">
+            </div>
+            <div class="form-group">
+                <label for="doctor-consulted">Doctor Id</label>
+                <input type="text" id="doctor-consulted" placeholder="Ex: DAH12345" name="doctor-consulted">
+            </div>
+            <div class="form-group">
+                <label for="clinic-visited">Clinic Visited</label>
+                <input type="date" id="clinic-visited" name="clinic-visited">
+            </div>
+        </div>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="unique-id">Unique Registration ID</label>
+                <input type="text" id="unique-id" name="unique-id">
+            </div>
+            <div class="form-group">
+                <label for="patient-history">Patient History</label>
+                <input type="text" id="patient-history" name="patient-history">
+            </div>
+            <div class="form-group">
+                <label for="registered">Registered</label>
+                <select id="registered" name="registered">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="time-waited">Time or Did you wait for more than 15 minutes?</label>
+                <select id="time-waited" name="time-waited">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="experience">Experience with the doctor?</label>
+                <select id="experience" name="experience">
+                    <option value="good">Good</option>
+                    <option value="average">Average</option>
+                    <option value="bad">Bad</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="start-treatment">Will you be starting the treatment?</label>
+                <select id="start-treatment" name="start-treatment">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="if-yes-when">If yes, when?</label>
+                <select id="if-yes-when" name="if-yes-when">
+                    <option value="immediate">Immediate</option>
+                    <option value="within-week">Within a week</option>
+                    <option value="later">Later</option>
+                </select>
+            </div>
+        </div>
+
+
+        <!-- Allergies Question -->
+        <div class="form-group">
+                <label for="allergies">Do you have any present allergies?</label>
+                <select id="allergies" onchange="toggleAllergiesBox()">
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
+                </select>
+            </div>
+    
+            <!-- Hidden Allergies Input -->
+            <div id="allergies-box" style="display: none;">
+                <label for="allergies-input">Please list your allergies:</label>
+                <input type="text" id="allergies-input" name="allergies">
+            </div>
+            
+            <!-- Medicines Question -->
+            <div class="form-group">
+                <label for="medicines">Are you taking any medicines?</label>
+                <select id="medicines" onchange="toggleMedicinesBox()">
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
+                </select>
+            </div>
+    
+            <!-- Hidden Medicines Input -->
+            <div id="medicines-box" style="display: none;">
+                <label for="medicines-input">Please list the medicines:</label>
+                <input type="text" id="medicines-input" name="medicines">
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+</div>
+<script>
+    function toggleAllergiesBox() {
+        const allergiesSelect = document.getElementById('allergies');
+        const allergiesBox = document.getElementById('allergies-box');
+        if (allergiesSelect.value === 'yes') {
+            allergiesBox.style.display = 'block';
+        } else {
+            allergiesBox.style.display = 'none';
+        }
+    }
+
+    function toggleMedicinesBox() {
+        const medicinesSelect = document.getElementById('medicines');
+        const medicinesBox = document.getElementById('medicines-box');
+        if (medicinesSelect.value === 'yes') {
+            medicinesBox.style.display = 'block';
+        } else {
+            medicinesBox.style.display = 'none';
+        }
+    }
+</script>
+</body>
+</html>
