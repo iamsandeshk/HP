@@ -179,46 +179,112 @@ html {
 }
 
 
-
-
 .folder {
   display: inline-block;
-  width: 10em;
-  height: 10em;
+  width: 12em;
+  height: 4.5em;
   padding: 20px;
   background-color: white;
-  margin-right: 1.5%;
+  margin-right: 5.5%;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   color: #333;
   box-shadow: 4px 4px 8px 4px rgb(112, 112, 112);
   transition: background-color 0.3s, transform 0.6s;
+  font-size: 1em;
 }
 
 .folder:hover {
   transform: scale(1.04);
 }
 
-.Hfolder {
-  display: inline-block;
-  width: 70em;
-  height: 15px;
-  padding: 20px;
-  background-color: white;
-  margin-left: 1.5%;
-  margin-bottom: 1.5%;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  color: #333;
-  box-shadow: 4px 4px 8px 4px rgb(112, 112, 112);
-  transition: background-color 0.3s, transform 0.6s;
-}
 
-.Hfolder:hover {
-  transform: scale(1.04);
-}
+
+     /* Unique Table Styles */
+     .table-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 20px auto;
+      font-family: Arial, sans-serif;
+  }
+  
+  .custom-table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #f9f9f9;
+      border-radius: 15px;
+      overflow: hidden;
+      border: 1px solid #ddd;
+  }
+  
+  .custom-table th, .custom-table td {
+      text-align: left;
+      padding: 12px;
+      border: 1px solid #ddd;
+  }
+  
+  .custom-table th {
+      background-color: #f4f4f4;
+  }
+
+  .custom-table tr {
+    cursor: pointer;
+  }
+  
+  .status {
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: bold;
+  }
+  
+  .improving {
+      background-color: #fdd835;
+      color: #333;
+  }
+  
+  .scheduled {
+      background-color: #4fc3f7;
+      color: #fff;
+  }
+  
+  .managing {
+      background-color: #66bb6a;
+      color: #fff;
+  }
+  
+  .stable {
+      background-color: #29b6f6;
+      color: #fff;
+  }
+  
+  /* Pagination */
+  .pagination {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+      font-size: 14px;
+  }
+  
+  .pagination-controls {
+      display: flex;
+      align-items: center;
+  }
+  
+  .pagination-btn {
+      background-color: #eee;
+      border: 1px solid #ddd;
+      padding: 5px 10px;
+      cursor: pointer;
+      margin: 0 5px;
+  }
+  
+  .pagination-btn:hover {
+      background-color: #ccc;
+  }
+  
 
 .plus-button {
   position: fixed;
