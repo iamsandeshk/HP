@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Settings Page</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            background-color: #fff;
+            width: 60%;
+            border-radius: 20px;
+            box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.4s ease;
+        }
+
+        .sidebar {
+            background-color: #4C5C68;
+            padding: 20px;
+            height: 100%;
+            width: 100%;
+            text-align: center;
+            transition: opacity 0.4s ease;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            padding: 15px 10px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .sidebar ul li:hover {
+            background-color: #FF5757;
+            transform: translateY(-5px);
+        }
+
+        .content {
+            padding: 30px;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            position: relative;
+        }
+
+        .content.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .content h2 {
+            font-size: 24px;
+            margin-top: 0;
+        }
+
+        .setting-group {
+            margin-bottom: 20px;
+        }
+
+        .setting-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .setting-group input, .setting-group select, .setting-group textarea {
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .setting-group p {
+            margin: 5px 0;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .edit-btn, .save-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 20px;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .edit-btn:hover, .save-btn:hover {
+            background-color: #45a049;
+        }
+
+        .editable input, .editable textarea, .editable select {
+            display: block;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #4CAF50;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        /* Back button */
+        .back-btn {
+          margin-top: 10px;
+          margin-left: 10px;
+            background-color: #FF5757;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 10px;
+            font-size: 16px;
+            display: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #FF3333;
+        }
+
+        /* Animation */
+        .fade-in {
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="sidebar">
+        <ul>
+            <li data-target="profile-settings">Profile Settings</li>
+            <li data-target="security-settings">Security Settings</li>
+            <li data-target="accessibility-settings">Accessibility Settings</li>
+            <li data-target="notifications-settings">Notifications</li>
+        </ul>
+    </div>
+
+    <!-- Back Button -->
+    <button class="back-btn" onclick="goBack()">← Back</button>
+
+    <div class="content" id="profile-settings">
+        <h2>Profile Settings</h2>
+        <div class="setting-group">
+            <p><strong>Profile Photo:</strong> <img src="profile-photo.png" alt="Profile Photo" style="border-radius: 50%; width: 80px;"></p>
+            <p><strong>Full Name:</strong> Fredy Mercury</p>
+            <p><strong>Doctor ID:</strong> DOC12345</p>
+            <p><strong>Specialist:</strong> <span id="specialist">Cardiologist</span></p>
+            <p><strong>Contact Number:</strong> <span id="contact">+1234567890</span></p>
+            <p><strong>Email:</strong> <span id="email">doctor@mail.com</span></p>
+            <p><strong>Hospital:</strong> City Hospital (CHS)</p>
+            <button class="edit-btn" onclick="enableEdit('profile-settings')">Edit</button>
+        </div>
+    </div>
+
+    <div class="content" id="security-settings">
+        <h2>Security Settings</h2>
+        <p><strong>Two-Step Verification:</strong> <span>Enabled</span> <button class="edit-btn" onclick="renewTwoStep()">Renew</button></p>
+        <p><strong>Account Privacy:</strong> Private</p>
+        <p><strong>Account Recovery:</strong> Email, SMS</p>
+        <p><strong>Request Account Info:</strong> <button class="edit-btn">Request</button></p>
+        <p><strong>Security Notifications:</strong> Enabled</p>
+        <p><strong>Delete Account:</strong> <button class="edit-btn">Delete</button></p>
+    </div>
+
+    <div class="content" id="accessibility-settings">
+        <h2>Accessibility Settings</h2>
+        <div class="setting-group">
+            <label for="font-size">Font Size</label>
+            <select id="font-size">
+                <option value="small">Small</option>
+                <option value="medium">Medium</option>
+                <option value="large">Large</option>
+            </select>
+        </div>
+        <div class="setting-group">
+            <label for="color-theme">Color Theme</label>
+            <select id="color-theme">
+                <option value="default">Default</option>
+                <option value="dark">Dark Mode</option>
+                <option value="high-contrast">High Contrast</option>
+            </select>
+        </div>
+        <button class="save-btn">Save Accessibility Settings</button>
+    </div>
+
+    <div class="content" id="notifications-settings">
+        <h2>Notifications Settings</h2>
+        <p><strong>Email Alerts:</strong> 
+            <label class="toggle-switch">
+                <input type="checkbox" id="email-alerts" checked>
+                <span class="slider"></span>
+            </label>
+        </p>
+        <p><strong>SMS Alerts:</strong> 
+            <label class="toggle-switch">
+                <input type="checkbox" id="sms-alerts">
+                <span class="slider"></span>
+            </label>
+        </p>
+        <p><strong>Reminders:</strong> 
+            <label class="toggle-switch">
+                <input type="checkbox" id="reminders">
+                <span class="slider"></span>
+            </label>
+        </p>
+    </div>
+</div>
+
+<script>
+    // Toggle between sidebar and content
+    document.querySelectorAll('.sidebar ul li').forEach(item => {
+        item.addEventListener('click', () => {
+            const target = document.getElementById(item.getAttribute('data-target'));
+            document.querySelector('.sidebar').style.display = 'none';
+            document.querySelectorAll('.content').forEach(content => content.classList.remove('active'));
+            target.classList.add('fade-in');
+            target.classList.add('active');
+            document.querySelector('.back-btn').style.display = 'block';
+        });
+    });
+
+    // Go back to the sidebar
+    function goBack() {
+        document.querySelectorAll('.content').forEach(content => content.classList.remove('active'));
+        document.querySelector('.sidebar').style.display = 'block';
+        document.querySelector('.back-btn').style.display = 'none';
+    }
+
+    // Enable editing for profile settings
+    function enableEdit(sectionId) {
+        const section = document.getElementById(sectionId);
+        section.classList.add('editable');
+        section.querySelectorAll('input, textarea, select').forEach(input => {
+            input.style.display = 'block';
+        });
+    }
+
+    // Renew Two-Step Verification
+    function renewTwoStep() {
+        alert('Two-Step Verification Renewed!');
+    }
+</script>
+
+</body>
+</html>
