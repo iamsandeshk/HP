@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Record</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .status-improving {
+            background-color: #f0ad4e;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 12px;
+        }
+
+        .status-scheduled {
+            background-color: #5bc0de;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 12px;
+        }
+
+        .status-managing {
+            background-color: #5cb85c;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 12px;
+        }
+
+        .status-stable {
+            background-color: #337ab7;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 12px;
+        }
+
+        .patient-info {
+            font-size: 1.6em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h2>Patient Record</h2>
+        <div id="patientInfo" class="patient-info"></div>
+        
+        
+        <div class="row mb-3">
+            <!-- Search Input -->
+            <div class="col-md-4">
+                <input type="text" id="search-input" class="form-control" placeholder="Search..." onkeyup="searchAndFilterTable()">
+                <!-- Filters -->
+            </div>
+            <div class="col-md-2">
+                <select id="filter-disease" class="form-control" onchange="searchAndFilterTable()">
+                    <option value="">All Diseases</option>
+                    <option value="Acne">Acne</option>
+                    <option value="Hypertension">Hypertension</option>
+                    <option value="Diabetes">Diabetes</option>
+                    <option value="Asthma">Asthma</option>
+                    <!-- Add more diseases here -->
+                </select>
+            </div>
+            <div class="col-md-2">
+                <select id="filter-doctor" class="form-control" onchange="searchAndFilterTable()">
+                    <option value="">All Doctors</option>
+                    <option value="Dr. Smith">Dr. Smith</option>
+                    <option value="Dr. Williams">Dr. Williams</option>
+                    <option value="Dr. Johnson">Dr. Johnson</option>
+                    <option value="Dr. Lee">Dr. Lee</option>
+                    <!-- Add more doctors here -->
+                </select>
+            </div>
+          
+            <div class="col-md-2">
+                <select id="filter-condition" class="form-control" onchange="searchAndFilterTable()">
+                    <option value="">All Conditions</option>
+                    <option value="Skin">Skin</option>
+                    <option value="Cardiology">Cardiology</option>
+                    <option value="Endocrinology">Endocrinology</option>
+                    <option value="Respiratory">Respiratory</option>
+                    <!-- Add more conditions here -->
+                </select>
+            </div>
+            <div class="col-md-2">
+                <select id="filter-status" class="form-control" onchange="searchAndFilterTable()">
+                    <option value="">All Statuses</option>
+                    <option value="Improving">Improving</option>
+                    <option value="Scheduled">Scheduled</option>
+                    <option value="Managing">Managing</option>
+                    <option value="Stable">Stable</option>
+                    <!-- Add more statuses here -->
+                </select>
+            </div>
+        </div>
+    
+        <!-- Patient Table -->
+        <table class="table table-bordered" id="patientTable">
+            <thead class="thead-light">
+                <tr>
+                    <th>No</th>
+                    <th>Disease Name</th>
+                    <th>Doctor's Name</th>
+                    <th>Last Visit</th>
+                    <th>Condition</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>01</td>
+                    <td>Acne</td>
+                    <td>Dr. Smith</td>
+                    <td>Jul 12, 2024</td>
+                    <td>Skin</td>
+                    <td><span class="status-improving">Improving</span></td>
+                </tr>
+                <tr>
+                    <td>02</td>
+                    <td>Hypertension</td>
+                    <td>Dr. Williams</td>
+                    <td>Aug 2, 2024</td>
+                    <td>Cardiology</td>
+                    <td><span class="status-scheduled">Scheduled</span></td>
+                </tr>
+                <tr>
+                    <td>03</td>
+                    <td>Diabetes</td>
+                    <td>Dr. Johnson</td>
+                    <td>Jun 12, 2024</td>
+                    <td>Endocrinology</td>
+                    <td><span class="status-managing">Managing</span></td>
+                </tr>
+                <tr>
+                    <td>04</td>
+                    <td>Asthma</td>
+                    <td>Dr. Lee</td>
+                    <td>Jul 22, 2024</td>
+                    <td>Respiratory</td>
+                    <td><span class="status-stable">Stable</span></td>
+                </tr>
+                <!-- Add more rows here -->
+            </tbody>
+        </table    
+    </div>
+    
+    <script>
+       function searchAndFilterTable() {
+    // Get search input value
+    let searchInput = document.getElementById('search-input').value.toLowerCase();
+
+    // Get filter values from the dropdowns
+    let diseaseFilter = document.getElementById('filter-disease').value.toLowerCase();
+    let doctorFilter = document.getElementById('filter-doctor').value.toLowerCase();
+
+    let conditionFilter = document.getElementById('filter-condition').value.toLowerCase();
+    let statusFilter = document.getElementById('filter-status').value.toLowerCase();
+
+    // Get the table and all rows in the body
+    let table = document.getElementById('patientTable');
+    let tr = table.getElementsByTagName('tr');
+
+    // Loop through each row (start from index 1 to skip the header)
+    for (let i = 1; i < tr.length; i++) {
+        // Get the values from each column of the row
+        let diseaseName = tr[i].getElementsByTagName('td')[1]; // Disease Name column
+        let doctorName = tr[i].getElementsByTagName('td')[2];  // Doctor's Name column
+      
+        let condition = tr[i].getElementsByTagName('td')[4];   // Condition column
+        let status = tr[i].getElementsByTagName('td')[5];      // Status column
+
+        if (diseaseName || doctorName || lastVisit || condition || status) {
+            let diseaseText = diseaseName.textContent || diseaseName.innerText;
+            let doctorText = doctorName.textContent || doctorName.innerText;
+        
+            let conditionText = condition.textContent || condition.innerText;
+            let statusText = status.textContent || status.innerText;
+
+            // Conditions for search and filter
+            let matchesSearch = (
+                diseaseText.toLowerCase().indexOf(searchInput) > -1 || 
+                doctorText.toLowerCase().indexOf(searchInput) > -1 ||
+          
+                conditionText.toLowerCase().indexOf(searchInput) > -1 ||
+                statusText.toLowerCase().indexOf(searchInput) > -1
+            );
+
+            let diseaseMatch = diseaseText.toLowerCase().indexOf(diseaseFilter) > -1 || diseaseFilter === '';
+            let doctorMatch = doctorText.toLowerCase().indexOf(doctorFilter) > -1 || doctorFilter === '';
+          
+            let conditionMatch = conditionText.toLowerCase().indexOf(conditionFilter) > -1 || conditionFilter === '';
+            let statusMatch = statusText.toLowerCase().indexOf(statusFilter) > -1 || statusFilter === '';
+
+            // Display row if it matches both the search term and all filters
+            if (matchesSearch && diseaseMatch && doctorMatch && conditionMatch && statusMatch) {
+                tr[i].style.display = '';  // Show row
+            } else {
+                tr[i].style.display = 'none';  // Hide row
+            }
+        }
+    }
+}
+    </script>
+    
+    <!-- Fetch and populate patient information -->
+    <script>
+        // Extract URL parameters to get patient name and ID
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+            const name = params.get('name');
+            return { id, name };
+        }
+    
+        // Display the patient name and ID
+        function displayPatientInfo() {
+            const patientInfoDiv = document.getElementById('patientInfo');
+            const { id, name } = getUrlParams();
+    
+            if (id && name) {
+                patientInfoDiv.textContent = `Patient ID: ${id} | Name: ${name}`;
+            } else {
+                patientInfoDiv.textContent = 'No patient data available.';
+            }
+        }
+    
+        // Call the function when the page loads
+        document.addEventListener('DOMContentLoaded', displayPatientInfo);
+    </script>
+
+</body>
+</html>
