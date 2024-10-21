@@ -19,16 +19,16 @@
         <div class="menu">
           <li class="menu-item" onclick="showSection('dashboard')"><span class="icon">📊</span>Dashboard</li>
           <li class="menu-item" onclick="showSection('patient-analytics')"><span class="icon">🗃️</span>Patient Analytics</li>
-    
+    <!--
           <a href="#" class="menu-item"
-            ><span class="icon">🏥</span> Hospital Data</a>
+            ><span class="icon">🏥</span> Hospital Data</a> -->
           <li class="menu-item" onclick="showSection('doctor-connect')"><span class="icon">👨‍⚕️</span>Doctors</li>
-
+       
           <a href="#" class="menu-item"
             ><span class="icon">📈</span> Statistics</a
           >
           <a href="#" class="menu-item"
-            ><span class="icon">🔬</span> Review</a
+            ><span class="icon">🪪</span> Feedback</a
           >
         </div>
       </div>
@@ -58,9 +58,10 @@
             <a href="#" class="nav-icon" title="Notifications"
               ><span class="nicon"><i class="fa-solid fa-bell"></i></span
             ></a>
-            <a href="#" class="nav-icon" title="Settings"
+            <a href="#" onclick="location.href='settings.html'" class="nav-icon" title="Settings"
               ><span class="nicon"><i class="fa-solid fa-gear"></i></span
             ></a>
+
             <a href="#" class="user-profile">
               <img
                 src="PIc/user-avatar.jpg"
@@ -84,8 +85,8 @@
       <div class="folders">
         <!-- Placeholder for dashboard folders or components -->
         <div class="folder">
-          <span class="folder-icon">💉</span>
-          <span class="folder-name">Lab Results</span>
+          <span class="folder-icon">📁</span>
+          <span class="folder-name">New Patients</span>
         </div>
         <div class="folder">
           <span class="folder-icon">💉</span>
@@ -93,33 +94,92 @@
         </div>
         <div class="folder">
           <span class="folder-icon">🧾</span>
-          <span class="folder-name">Recent Records</span>
+          <span class="folder-name">MY Schedules</span>
         </div>
         <div class="folder">
-          <span class="folder-icon">💉</span>
-          <span class="folder-name">Lab Results</span>
-        </div>
-        <div class="folder">
-          <span class="folder-icon">📁</span>
-          <span class="folder-name">New Patients</span>
+          <span class="folder-icon">😷</span>
+          <span class="folder-name">Colabrations</span>
         </div>
       </div>
       <h2>Recent Records :</h2>
-      <div class="HLine">
-        <div class="Hfolder">
-          <span class="folder-icon">💉</span>
-          <span class="folder-name">Lab Results</span>
+      <div class="table-container">
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>ID</th>
+                    <th>Patient Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Last Visit</th>
+                    <th>Condition</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="clickable-row" data-href="patient-rec-table.html?id=809776&name=Wade Warren">
+                    <td>01</td>
+                    <td>#809776</td>
+                    <td>Wade Warren</td>
+                    <td>21</td>
+                    <td>Female</td>
+                    <td>Jul 12, 2024</td>
+                    <td>Acne</td>
+                    <td><span class="status improving">Improving</span></td>
+                </tr>
+                <tr class="clickable-row" data-href="patient-rec-table.html?id=540775&name=Darlene Robertson">
+                    <td>02</td>
+                    <td>#540775</td>
+                    <td>Darlene Robertson</td>
+                    <td>27</td>
+                    <td>Male</td>
+                    <td>Aug 2, 2024</td>
+                    <td>Hypertension</td>
+                    <td><span class="status scheduled">Scheduled</span></td>
+                </tr>
+                <tr class="clickable-row" data-href="patient-rec-table.html?id=123456&name=John Doe">
+                    <td>03</td>
+                    <td>#123456</td>
+                    <td>John Doe</td>
+                    <td>32</td>
+                    <td>Male</td>
+                    <td>Jun 30, 2024</td>
+                    <td>Diabetes</td>
+                    <td><span class="status managing">Managing</span></td>
+                </tr>
+                <tr class="clickable-row" data-href="patient-rec-table.html?id=654321&name=Jane Smith">
+                    <td>04</td>
+                    <td>#654321</td>
+                    <td>Jane Smith</td>
+                    <td>29</td>
+                    <td>Female</td>
+                    <td>May 15, 2024</td>
+                    <td>Asthma</td>
+                    <td><span class="status stable">Stable</span></td>
+                </tr>
+                <tr class="clickable-row" data-href="patient-rec-table.html?id=987654&name=Alice Brown">
+                    <td>05</td>
+                    <td>#987654</td>
+                    <td>Alice Brown</td>
+                    <td>45</td>
+                    <td>Female</td>
+                    <td>Sep 5, 2024</td>
+                    <td>Cardiology</td>
+                    <td><span class="status improving">Improving</span></td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <div class="pagination">
+            <span>Showing 1 to 5 of 5 entries</span>
+            <div class="pagination-controls">
+                <button class="pagination-btn">«</button>
+                <span>Page 1 of 1</span>
+                <button class="pagination-btn">»</button>
+            </div>
         </div>
-        <div class="Hfolder">
-          <span class="folder-icon">💉</span>
-          <span class="folder-name">Lab Results</span>
-        </div>
-        <div class="Hfolder">
-          <span class="folder-icon">💉</span>
-          <span class="folder-name">Lab Results</span>
-        </div>
-      </div>
-  <button class="plus-button" onclick="openPage()">+</button>
+    </div>
+
     <!-- Your dashboard content here -->
   </section>
 
@@ -250,14 +310,13 @@
 
 </div>
 
-
-
     </div>
     </div>
     <script>
       function openPage() {
           window.open('NewP.html'); // Opens in a new tab
       }
+      
       function showSection(sectionId) {
         // Hide all sections
   const sections = document.querySelectorAll('section');
@@ -297,9 +356,58 @@ function showSection(sectionId) {
     activeMenuItem.classList.add('active');
   }
 }
-
-
 </script>
-  
+
+<!--Patient information -->
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const rows = document.querySelectorAll('.clickable-row');
+      
+      rows.forEach(row => {
+          row.addEventListener('click', function() {
+              const href = row.getAttribute('data-href');
+              window.location.href = href;
+          });
+      });
+  });
+</script>
+
+
+<!--Settings Menu-->
+<script>
+  // Toggle between sidebar and content
+  document.querySelectorAll('.sidebar ul li').forEach(item => {
+      item.addEventListener('click', () => {
+          const target = document.getElementById(item.getAttribute('data-target'));
+          document.querySelector('.sidebar').style.display = 'none';
+          document.querySelectorAll('.content').forEach(content => content.classList.remove('active'));
+          target.classList.add('fade-in');
+          target.classList.add('active');
+          document.querySelector('.back-btn').style.display = 'block';
+      });
+  });
+
+  // Go back to the sidebar
+  function goBack() {
+      document.querySelectorAll('.content').forEach(content => content.classList.remove('active'));
+      document.querySelector('.sidebar').style.display = 'block';
+      document.querySelector('.back-btn').style.display = 'none';
+  }
+
+  // Enable editing for profile settings
+  function enableEdit(sectionId) {
+      const section = document.getElementById(sectionId);
+      section.classList.add('editable');
+      section.querySelectorAll('input, textarea, select').forEach(input => {
+          input.style.display = 'block';
+      });
+  }
+
+  // Renew Two-Step Verification
+  function renewTwoStep() {
+      alert('Two-Step Verification Renewed!');
+  }
+</script>
   </body>
 </html>
