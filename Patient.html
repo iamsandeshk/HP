@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>H+ Patient Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="patient.css" />
+
+  </head>
+  <body>
+    <div class="container">
+    <div class="sidebar">
+      <div class="sidebar-top">
+        <div class="logo">H+</div>
+        <div class="menu">
+          <li class="menu-item" onclick="showSection('dashboard')"><span class="icon">📊</span>Dashboard</li>
+          <!--
+          <li class="menu-item" onclick="showSection('patient-analytics')"><span class="icon">🗃️</span>Patient Analytics</li>
+          <a href="#" class="menu-item"
+            ><span class="icon">🏥</span> Hospital Data</a> -->
+          <li class="menu-item" onclick="showSection('doctor-connect')"><span class="icon">👨‍⚕️</span>Doctors</li>
+       <!--
+          <a href="#" class="menu-item"
+            ><span class="icon">📈</span> Statistics</a
+          >
+        -->
+          <a href="#" class="menu-item"
+            ><span class="icon">🪪</span> Feedback</a
+          >
+        </div>
+      </div>
+      <div class="sidebar-bottom">
+        <a href="#" class="log-out"
+          ><i class="fa-solid fa-right-from-bracket"></i
+          ><span class="icon"></span>Logout</a
+        >
+      </div>
+    </div>
+    <div class="main-content">
+      <div class="header">
+        <div class="nav-bar">
+          <div class="search-container">
+            <input type="text" placeholder="Search..." class="search-input" />
+            <button class="search-button">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div> <div class="welcome">
+            <h1 style="font-family:Source Code Pro;font-weight: bolder;font-size: 40px;">Your Health, Your Choice</h1>
+          </div>
+
+          <div class="nav-right">
+            <a href="#" class="nav-icon" title="Help"
+              ><span class="nicon"><i class="fa-solid fa-question"></i></span
+            ></a>
+            <a href="#" class="nav-icon" title="Notifications"
+              ><span class="nicon"><i class="fa-solid fa-bell"></i></span
+            ></a>
+            <a href="#" onclick="location.href='settings.html'" class="nav-icon" title="Settings"
+              ><span class="nicon"><i class="fa-solid fa-gear"></i></span
+            ></a>
+
+            <a href="#" class="user-profile">
+              <img
+                src="user-avatar.jpg"
+                alt="User Avatar"
+                class="user-avatar"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+      
+  
+
+<!-- Content Sections -->
+<div class="content">
+  <!-- Dashboard Section -->
+  <section id="dashboard">
+      <div>
+        <h2 style="color: rgb(43, 43, 53)">Dashboard :</h2>
+      </div>
+      <div class="folders">
+        <!-- Placeholder for dashboard folders or components -->
+        <div class="folder">
+          <span class="folder-icon">📁</span>
+          <span class="folder-name">My Records</span>
+        </div>
+        <div class="folder">
+          <span class="folder-icon">💉</span>
+          <span class="folder-name">Medicines</span>
+        </div>
+        <div class="folder">
+          <span class="folder-icon">🧾</span>
+          <span class="folder-name">MY Schedules</span>
+        </div>
+        <div class="folder">
+          <span class="folder-icon">😷</span>
+          <span class="folder-name">Reminders</span>
+        </div>
+      </div>
+      <div class="container mt-5">
+        <h2>Patient Record</h2>
+        <div id="patientInfo" class="patient-info"></div>
+        
+        
+        <div class="row mb-3">
+            <!-- Search Input -->
+            <div class="col-md-4">
+                <input type="text" id="search-input" class="form-control" placeholder="Search..." onkeyup="searchAndFilterTable()">
+                <!-- Filters -->
+            </div>
+            <div class="col-md-2">
+                <select id="filter-disease" class="form-control" onchange="searchAndFilterTable()">
+                    <option value="">All Diseases</option>
+                    <option value="Acne">Acne</option>
+                    <option value="Hypertension">Hypertension</option>
+                    <option value="Diabetes">Diabetes</option>
+                    <option value="Asthma">Asthma</option>
+                    <!-- Add more diseases here -->
+                </select>
+            </div>
+            <div class="col-md-2">
+                <select id="filter-doctor" class="form-control" onchange="searchAndFilterTable()">
+                    <option value="">All Doctors</option>
+                    <option value="Dr. Smith">Dr. Smith</option>
+                    <option value="Dr. Williams">Dr. Williams</option>
+                    <option value="Dr. Johnson">Dr. Johnson</option>
+                    <option value="Dr. Lee">Dr. Lee</option>
+                    <!-- Add more doctors here -->
+                </select>
+            </div>
+          
+            <div class="col-md-2">
+                <select id="filter-condition" class="form-control" onchange="searchAndFilterTable()">
+                    <option value="">All Conditions</option>
+                    <option value="Skin">Skin</option>
+                    <option value="Cardiology">Cardiology</option>
+                    <option value="Endocrinology">Endocrinology</option>
+                    <option value="Respiratory">Respiratory</option>
+                    <!-- Add more conditions here -->
+                </select>
+            </div>
+            <div class="col-md-2">
+                <select id="filter-status" class="form-control" onchange="searchAndFilterTable()">
+                    <option value="">All Statuses</option>
+                    <option value="Improving">Improving</option>
+                    <option value="Scheduled">Scheduled</option>
+                    <option value="Managing">Managing</option>
+                    <option value="Stable">Stable</option>
+                    <!-- Add more statuses here -->
+                </select>
+            </div>
+        </div>
+    
+        <!-- Patient Table -->
+        <table class="table table-bordered" id="patientTable">
+            <thead class="thead-light">
+                <tr>
+                    <th>No</th>
+                    <th>Disease Name</th>
+                    <th>Doctor's Name</th>
+                    <th>Last Visit</th>
+                    <th>Condition</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>01</td>
+                    <td>Acne</td>
+                    <td>Dr. Smith</td>
+                    <td>Jul 12, 2024</td>
+                    <td>Skin</td>
+                    <td><span class="status-improving">Improving</span></td>
+                </tr>
+                <tr>
+                    <td>02</td>
+                    <td>Hypertension</td>
+                    <td>Dr. Williams</td>
+                    <td>Aug 2, 2024</td>
+                    <td>Cardiology</td>
+                    <td><span class="status-scheduled">Scheduled</span></td>
+                </tr>
+                <tr>
+                    <td>03</td>
+                    <td>Diabetes</td>
+                    <td>Dr. Johnson</td>
+                    <td>Jun 12, 2024</td>
+                    <td>Endocrinology</td>
+                    <td><span class="status-managing">Managing</span></td>
+                </tr>
+                <tr>
+                    <td>04</td>
+                    <td>Asthma</td>
+                    <td>Dr. Lee</td>
+                    <td>Jul 22, 2024</td>
+                    <td>Respiratory</td>
+                    <td><span class="status-stable">Stable</span></td>
+                </tr>
+                <!-- Add more rows here -->
+            </tbody>
+        </table    
+    </div>
+
+    <!-- Your dashboard content here -->
+  </section>
+
+  <!-- Doctors Section -->
+  <section id="doctor-connect" style="display:none;">
+    <h1>Doctors Content</h1>
+    <!-- Your doctor search content here -->
+
+      <div class="doctor-search-container">
+        <div class="doctor-search-header">
+            <h2>Look for doctors</h2>
+            <div class="doctor-search-options">
+                <button class="doctor-search-option active">Doctors</button>
+                <button class="doctor-search-option">Health facility</button>
+            </div>
+        </div>
+    
+        <div class="doctor-search-filter">
+            <select class="doctor-search-select">
+                <option value="all">All doctors</option>
+            </select>
+            <input type="text" placeholder="Look for doctors by name" class="doctor-search-input" />
+            <button class="doctor-search-btn">🔍</button>
+        </div>
+    
+        <div class="doctor-list">
+            <!-- Doctor 1 -->
+            <div class="doctor-card">
+                <img src="doctor1.jpg" alt="Dr. Veselin Ivanova" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Dr. Veselin Ivanova</h3>
+                    <p class="doctor-specialty">Hematology</p>
+                    <p class="doctor-facility">MC "Dr. Kalchev"</p>
+                </div>
+            </div>
+    
+            <!-- Doctor 2 -->
+            <div class="doctor-card">
+                <img src="doctor2.jpg" alt="Dr. Georgi Tonchev" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Dr. Georgi Tonchev</h3>
+                    <p class="doctor-specialty">Hematology</p>
+                    <p class="doctor-facility">MC "Dr. Kalchev"</p>
+                </div>
+            </div>
+    
+            <!-- Doctor 3 -->
+            <div class="doctor-card">
+                <img src="doctor3.jpg" alt="Dr. Ivan-Asen Shishmanov" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Dr. Ivan-Asen Shishmanov</h3>
+                    <p class="doctor-specialty">Cardiology</p>
+                    <p class="doctor-facility">DCC Saint Sofia</p>
+                </div>
+            </div>
+    
+            <!-- Doctor 4 -->
+            <div class="doctor-card">
+                <img src="doctor4.jpg" alt="Dr. Daniela Krasimirova" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Dr. Daniela Krasimirova</h3>
+                    <p class="doctor-specialty">Endocrinology</p>
+                    <p class="doctor-facility">MC "Dr. Kalchev"</p>
+                </div>
+            </div>
+    
+        
+        </div>
+    </div>
+
+  </section>
+
+</div>
+
+    </div>
+    </div>
+    <script>
+  
+      
+      function showSection(sectionId) {
+        // Hide all sections
+  const sections = document.querySelectorAll('section');
+  sections.forEach(section => {
+    section.style.display = 'none';
+  });
+
+  // Show the selected section
+  const selectedSection = document.getElementById(sectionId);
+  if (selectedSection) {
+    selectedSection.style.display = 'block';
+  }
+}
+
+function showSection(sectionId) {
+  // Hide all sections
+  const sections = document.querySelectorAll('section');
+  sections.forEach(section => {
+    section.style.display = 'none';
+  });
+
+  // Remove active class from all menu items
+  const menuItems = document.querySelectorAll('.menu-item');
+  menuItems.forEach(item => {
+    item.classList.remove('active');
+  });
+
+  // Show the selected section
+  const selectedSection = document.getElementById(sectionId);
+  if (selectedSection) {
+    selectedSection.style.display = 'block';
+  }
+
+  // Highlight the active menu item
+  const activeMenuItem = document.querySelector(`.menu-item[onclick="showSection('${sectionId}')"]`);
+  if (activeMenuItem) {
+    activeMenuItem.classList.add('active');
+  }
+}
+</script>
+
+<!--Patient information -->
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const rows = document.querySelectorAll('.clickable-row');
+      
+      rows.forEach(row => {
+          row.addEventListener('click', function() {
+              const href = row.getAttribute('data-href');
+              window.location.href = href;
+          });
+      });
+  });
+</script>
+
+
+<!--Settings Menu-->
+<script>
+  // Toggle between sidebar and content
+  document.querySelectorAll('.sidebar ul li').forEach(item => {
+      item.addEventListener('click', () => {
+          const target = document.getElementById(item.getAttribute('data-target'));
+          document.querySelector('.sidebar').style.display = 'none';
+          document.querySelectorAll('.content').forEach(content => content.classList.remove('active'));
+          target.classList.add('fade-in');
+          target.classList.add('active');
+          document.querySelector('.back-btn').style.display = 'block';
+      });
+  });
+
+  // Go back to the sidebar
+  function goBack() {
+      document.querySelectorAll('.content').forEach(content => content.classList.remove('active'));
+      document.querySelector('.sidebar').style.display = 'block';
+      document.querySelector('.back-btn').style.display = 'none';
+  }
+
+  // Enable editing for profile settings
+  function enableEdit(sectionId) {
+      const section = document.getElementById(sectionId);
+      section.classList.add('editable');
+      section.querySelectorAll('input, textarea, select').forEach(input => {
+          input.style.display = 'block';
+      });
+  }
+
+  // Renew Two-Step Verification
+  function renewTwoStep() {
+      alert('Two-Step Verification Renewed!');
+  }
+</script>
+  
+<script>
+  function searchAndFilterTable() {
+// Get search input value
+let searchInput = document.getElementById('search-input').value.toLowerCase();
+
+// Get filter values from the dropdowns
+let diseaseFilter = document.getElementById('filter-disease').value.toLowerCase();
+let doctorFilter = document.getElementById('filter-doctor').value.toLowerCase();
+
+let conditionFilter = document.getElementById('filter-condition').value.toLowerCase();
+let statusFilter = document.getElementById('filter-status').value.toLowerCase();
+
+// Get the table and all rows in the body
+let table = document.getElementById('patientTable');
+let tr = table.getElementsByTagName('tr');
+
+// Loop through each row (start from index 1 to skip the header)
+for (let i = 1; i < tr.length; i++) {
+   // Get the values from each column of the row
+   let diseaseName = tr[i].getElementsByTagName('td')[1]; // Disease Name column
+   let doctorName = tr[i].getElementsByTagName('td')[2];  // Doctor's Name column
+ 
+   let condition = tr[i].getElementsByTagName('td')[4];   // Condition column
+   let status = tr[i].getElementsByTagName('td')[5];      // Status column
+
+   if (diseaseName || doctorName || lastVisit || condition || status) {
+       let diseaseText = diseaseName.textContent || diseaseName.innerText;
+       let doctorText = doctorName.textContent || doctorName.innerText;
+   
+       let conditionText = condition.textContent || condition.innerText;
+       let statusText = status.textContent || status.innerText;
+
+       // Conditions for search and filter
+       let matchesSearch = (
+           diseaseText.toLowerCase().indexOf(searchInput) > -1 || 
+           doctorText.toLowerCase().indexOf(searchInput) > -1 ||
+     
+           conditionText.toLowerCase().indexOf(searchInput) > -1 ||
+           statusText.toLowerCase().indexOf(searchInput) > -1
+       );
+
+       let diseaseMatch = diseaseText.toLowerCase().indexOf(diseaseFilter) > -1 || diseaseFilter === '';
+       let doctorMatch = doctorText.toLowerCase().indexOf(doctorFilter) > -1 || doctorFilter === '';
+     
+       let conditionMatch = conditionText.toLowerCase().indexOf(conditionFilter) > -1 || conditionFilter === '';
+       let statusMatch = statusText.toLowerCase().indexOf(statusFilter) > -1 || statusFilter === '';
+
+       // Display row if it matches both the search term and all filters
+       if (matchesSearch && diseaseMatch && doctorMatch && conditionMatch && statusMatch) {
+           tr[i].style.display = '';  // Show row
+       } else {
+           tr[i].style.display = 'none';  // Hide row
+       }
+   }
+}
+}
+</script>
+
+  </body>
+</html>
