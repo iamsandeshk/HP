@@ -5,4 +5,4 @@
 
 | Title | Code | Live Demo |
 | ----- | ---- | --------- |
-|Stopwatch| [Code](https://github.com/iamsandeshk/HP/tree/main)| [Demo](https://iamsandeshk.github.io/HP/LoginPage.html)|
+|Stopwatch| [Code](https://github.com/iamsandeshk/HP/tree/main)| [Doctor-Demo](https://iamsandeshk.github.io/HP/index.html) [Patient-Demo](https://iamsandeshk.github.io/HP/Patient.html)|
